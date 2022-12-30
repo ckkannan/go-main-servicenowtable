@@ -11,7 +11,7 @@ const HostURL string = "https://p1ehowld170.prudential.com"
 
 var h string = HostURL
 var user string = "super-api-1"
-var pass string = "b;Bn9RI]2HBh?M^."
+var pass string = "Remove Passwd"
 var host *string = &h
 var puser *string = &user
 var ppass *string = &pass
