@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
-
-	"os"
-
 	"ckkannan/servicenowtable_client"
+	"fmt"
+	"os"
+	"reflect"
 )
 
 const CSN_URL string = "https://dev161016.service-now.com/"
@@ -42,20 +41,19 @@ func main() {
 	}
 
 	c.Table = "x_22541_terraform_organization"
-	c.Query = "to_adgroupSTARTSWITHSSDP-TFE"
+	// c.Query = "to_adgroupSTARTSWITHSSDP-TFE"
+	c.Query = ""
 	c.Fields = "sys_id,to_adgroup,to_org_name,to_org_type,id"
 
-	OrgRows, err := c.GetRows()
+	OrgRows, err := c.GetOrgRows()
 	if err != nil {
 		fmt.Println("Query Failed")
 		os.Exit(1)
 	}
 
-	for i := range OrgRows {
-		for k1, v1 := range OrgRows[i] {
-			fmt.Print(i, " ", k1, " ")
-			fmt.Println(v1)
-		}
+	for i, k := range OrgRows {
+		fmt.Printf("%s   ", reflect.TypeOf(k.To_adgroup))
+		fmt.Println(i, "   ", k.To_adgroup)
 
 	}
 
